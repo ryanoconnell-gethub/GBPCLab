@@ -1,0 +1,123 @@
+{
+  "environment": "GBPC sandbox only",
+  "dataClassification": "Fictional training data — not a customer account system",
+  "apiVersion": "v1",
+  "accounts": [
+    {
+      "accountId": "GBPC-TEST-10001",
+      "accountHolderName": "Peter Parker",
+      "serviceAddress": "101 Queensboro Avenue, Halifax, NS",
+      "accountStatus": "Active",
+      "currentBalance": 84.27,
+      "currency": "CAD",
+      "nextBillDate": "2026-10-01",
+      "dueDate": "2026-10-15",
+      "billingCycle": "Monthly",
+      "lastPayment": {
+        "amount": 50.00,
+        "currency": "CAD",
+        "status": "Posted",
+        "postedDate": "2026-09-10"
+      },
+      "billCopy": {
+        "available": true,
+        "deliveryMethod": "Secure customer portal",
+        "url": "https://example.invalid/gbpc-sandbox-bills/GBPC-TEST-10001",
+        "expiresAt": "2026-09-18T20:00:00Z"
+      }
+    },
+    {
+      "accountId": "GBPC-TEST-10002",
+      "accountHolderName": "Natasha Romanoff",
+      "serviceAddress": "22 Red Room Lane, Dartmouth, NS",
+      "accountStatus": "Active",
+      "currentBalance": 0.00,
+      "currency": "CAD",
+      "nextBillDate": "2026-10-03",
+      "dueDate": "2026-10-17",
+      "billingCycle": "Monthly",
+      "lastPayment": {
+        "amount": 112.40,
+        "currency": "CAD",
+        "status": "Posted",
+        "postedDate": "2026-09-12"
+      },
+      "billCopy": {
+        "available": true,
+        "deliveryMethod": "Secure customer portal",
+        "url": "https://example.invalid/gbpc-sandbox-bills/GBPC-TEST-10002",
+        "expiresAt": "2026-09-18T20:00:00Z"
+      }
+    },
+    {
+      "accountId": "GBPC-TEST-10003",
+      "accountHolderName": "Tony Stark",
+      "serviceAddress": "300 Arc Reactor Drive, Bedford, NS",
+      "accountStatus": "Active",
+      "currentBalance": 215.90,
+      "currency": "CAD",
+      "nextBillDate": "2026-09-28",
+      "dueDate": "2026-10-12",
+      "billingCycle": "Monthly",
+      "lastPayment": {
+        "amount": 75.00,
+        "currency": "CAD",
+        "status": "Pending",
+        "postedDate": "2026-09-17"
+      },
+      "billCopy": {
+        "available": false,
+        "deliveryMethod": "Not available in sandbox",
+        "url": null,
+        "expiresAt": null
+      }
+    },
+    {
+      "accountId": "GBPC-TEST-10004",
+      "accountHolderName": "Carol Danvers",
+      "serviceAddress": "17 Photon Way, Sackville, NS",
+      "accountStatus": "Past Due — Sandbox Test",
+      "currentBalance": 42.10,
+      "currency": "CAD",
+      "nextBillDate": "2026-09-25",
+      "dueDate": "2026-10-09",
+      "billingCycle": "Monthly",
+      "lastPayment": {
+        "amount": 42.10,
+        "currency": "CAD",
+        "status": "Returned",
+        "postedDate": "2026-09-08"
+      },
+      "billCopy": {
+        "available": true,
+        "deliveryMethod": "Secure customer portal",
+        "url": "https://example.invalid/gbpc-sandbox-bills/GBPC-TEST-10004",
+        "expiresAt": "2026-09-18T20:00:00Z"
+      }
+    },
+    {
+      "accountId": "GBPC-TEST-10005",
+      "accountHolderName": "Steve Rogers",
+      "serviceAddress": "1945 Shield Street, Lower Sackville, NS",
+      "accountStatus": "Active",
+      "currentBalance": 167.35,
+      "currency": "CAD",
+      "nextBillDate": "2026-09-30",
+      "dueDate": "2026-10-14",
+      "billingCycle": "Monthly",
+      "lastPayment": {
+        "amount": 100.00,
+        "currency": "CAD",
+        "status": "Posted",
+        "postedDate": "2026-09-11"
+      },
+      "billCopy": {
+        "available": true,
+        "deliveryMethod": "Secure customer portal",
+        "url": "https://example.invalid/gbpc-sandbox-bills/GBPC-TEST-10005",
+        "expiresAt": "2026-09-18T20:00:00Z"
+      }
+    }
+  ],
+  "privacyNotice": "All names, addresses, account identifiers, amounts, payment details, links, and statuses in this file are fictional sandbox data. Do not use for production or with real customer information."
+}
