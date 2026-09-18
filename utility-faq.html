@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GBPC Utility Support sandbox FAQ website source for Webex AI Agent testing.">
+  <title>GBPC Utility Support | Sandbox FAQ</title>
+  <style>
+    :root {
+      --navy: #123b63;
+      --blue: #1769aa;
+      --light-blue: #eaf4fb;
+      --green: #166b45;
+      --amber: #9a5a00;
+      --red: #9e2929;
+      --ink: #172b3a;
+      --muted: #506777;
+      --line: #d7e1e8;
+      --page: #f4f8fa;
+      --card: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header {
+      color: #fff;
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      padding: 52px 24px 42px;
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #cdeaff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { line-height: 1.2; }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.35rem);
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: #e5f4ff;
+      font-size: 1.12rem;
+    }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav .container {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding: 13px 0;
+      white-space: nowrap;
+    }
+
+    nav a {
+      color: var(--navy);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    nav a:hover, nav a:focus { text-decoration: underline; }
+
+    main { padding: 34px 0 54px; }
+
+    .notice, .emergency, .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(13, 52, 78, 0.06);
+    }
+
+    .notice {
+      margin-bottom: 28px;
+      padding: 20px 22px;
+      border-left: 6px solid var(--blue);
+    }
+
+    .notice p { margin: 0; }
+
+    .emergency {
+      margin-bottom: 28px;
+      padding: 24px;
+      border-color: #e7b8b8;
+      border-left: 6px solid var(--red);
+      background: #fffafa;
+    }
+
+    .emergency h2 { color: var(--red); }
+
+    section { margin: 36px 0; }
+
+    section > h2 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+    }
+
+    section > p { max-width: 900px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .card { padding: 22px; }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--navy);
+      font-size: 1.16rem;
+    }
+
+    .card p:last-child, .card ul:last-child { margin-bottom: 0; }
+
+    .tag {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: var(--green);
+      background: #e7f6ee;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .warning {
+      color: #6b4300;
+      background: #fff7e8;
+      border: 1px solid #f0d496;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .warning h3 { color: var(--amber); }
+
+    .steps {
+      counter-reset: item;
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      position: relative;
+      min-height: 42px;
+      padding: 9px 12px 9px 55px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .steps li::before {
+      position: absolute;
+      top: 8px;
+      left: 12px;
+      width: 29px;
+      height: 29px;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 50%;
+      content: counter(item);
+      counter-increment: item;
+      display: grid;
+      place-items: center;
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(13, 52, 78, 0.05);
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #fff;
+      background: var(--navy);
+      font-size: 0.9rem;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    details {
+      margin: 10px 0;
+      padding: 0 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 16px 0;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    details p { padding-bottom: 14px; }
+
+    footer {
+      color: #dcecff;
+      background: #102b45;
+      padding: 30px 24px;
+    }
+
+    footer p { margin: 0; }
+
+    .small { color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 600px) {
+      .container { width: min(100% - 28px, 1080px); }
+      header { padding: 40px 14px 34px; }
+      main { padding-top: 25px; }
+      th, td { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <p class="eyebrow">GBPC Learning Environment</p>
+      <h1>GBPC Utility Support Sandbox FAQ</h1>
+      <p class="subtitle">A controlled website knowledge source for testing Webex AI Agent website ingestion, retrieval, escalation, and customer-friendly answers.</p>
+    </div>
+  </header>
+
+  <nav aria-label="FAQ sections">
+    <div class="container">
+      <a href="#digital-services">Digital services</a>
+      <a href="#meters">Meters</a>
+      <a href="#energy-use">Energy use</a>
+      <a href="#vegetation">Vegetation</a>
+      <a href="#outage-preparedness">Preparedness</a>
+      <a href="#escalation">Contact support</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="notice">
+      <p><strong>Sandbox notice:</strong> This page is fictional training content only. It is not a GBPC policy page, service commitment, rate schedule, emergency notice, or customer account system. It is intentionally different from the document-based FAQ knowledge source so that website-source retrieval can be tested independently.</p>
+    </div>
+
+    <section id="digital-services">
+      <h2>Digital service tools</h2>
+      <p>GBPC's sandbox digital-service experience is designed to explain general processes. It cannot authenticate a customer, access a specific account, submit a request, change service, or confirm whether an online request was completed.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">New test content</span>
+          <h3>Service request reference numbers</h3>
+          <p>In this sandbox, a request reference number has the format <strong>GBPC-YYMM-XXXXX</strong>. A reference number is used only as an example for testing conversation handling. The AI assistant must not state that it can locate, verify, or update a real request from a reference number.</p>
+        </article>
+        <article class="card">
+          <span class="tag">New test content</span>
+          <h3>Online account activation</h3>
+          <p>For the sandbox, online account enrollment is described as a two-step process: confirm the customer email address, then create a password in the approved account portal. The chat assistant must never ask a customer to provide a password, verification code, security answer, or full account number in chat.</p>
+        </article>
+        <article class="card">
+          <span class="tag">New test content</span>
+          <h3>Accessibility support</h3>
+          <p>Customers who need an accessible communication format, an interpreter, or assistance using the website should be offered a customer-service representative. The virtual assistant can explain that accommodation requests require human support and may depend on the individual situation.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="meters">
+      <h2>Electric meters and meter access</h2>
+      <p>These general questions help test whether the AI Agent can retrieve content from this website source. They do not authorize the assistant to diagnose equipment, schedule field work, or make safety decisions.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Why does GBPC need access to a meter?</h3>
+          <p>Meter access may be needed for safe inspection, maintenance, reading, replacement, or investigation of a reported equipment issue. The timing and requirements for access depend on the location, equipment, safety conditions, and applicable process.</p>
+        </article>
+        <article class="card">
+          <h3>My meter is blocked. What should I do?</h3>
+          <p>Where it is safe to do so, customers should keep a clear path to electrical equipment and avoid placing stored materials, landscaping features, locked gates, or structures in a way that prevents safe access. For a specific access concern, appointment, notice, or equipment location, offer a representative.</p>
+        </article>
+        <article class="card">
+          <h3>Can I remove a meter seal?</h3>
+          <p>No. Customers should not remove, tamper with, open, repair, or alter meters, seals, service panels, or utility-owned electrical equipment. If equipment appears damaged, hot, sparking, loose, or unsafe, stay away and use the approved emergency reporting process.</p>
+        </article>
+        <article class="card">
+          <h3>What is a smart meter?</h3>
+          <p>For this sandbox, a smart meter is an electric meter that can support remote meter reading and operational information exchange. The assistant can provide this general description but cannot confirm whether a particular property has a smart meter or how its individual data is used.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="energy-use">
+      <h2>Understanding energy use</h2>
+      <p>The assistant may provide general conservation information. It must not estimate a customer's bill, promise savings, diagnose a home, or give electrical repair instructions.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Why can electricity use change from month to month?</h3>
+          <p>Energy use can vary with weather, heating or cooling needs, occupancy, appliance use, building characteristics, seasonal routines, and equipment condition. A representative can discuss an account-specific bill or usage history through an approved process.</p>
+        </article>
+        <article class="card">
+          <h3>What are simple ways to reduce energy use?</h3>
+          <ul>
+            <li>Use a programmable or smart thermostat according to manufacturer guidance.</li>
+            <li>Turn off lights and electronics that are not needed.</li>
+            <li>Use efficient lighting and maintain heating and cooling equipment through qualified service providers.</li>
+            <li>Weather-strip doors and windows where appropriate.</li>
+            <li>Run full dishwasher and laundry loads when practical.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Why might a bill seem higher in winter?</h3>
+          <p>Cold weather can increase heating demand, and shorter daylight hours can affect lighting use. A bill may also reflect billing-cycle length, changes in household activity, or other factors. The assistant must not conclude the reason for a specific customer bill without approved account access and review.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="vegetation">
+      <h2>Trees and power lines</h2>
+      <p>Vegetation management is a common public-information topic. The assistant should provide general information and transfer requests that require inspection, scheduling, ownership decisions, or hazard assessment.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Can I trim branches near a power line?</h3>
+          <p>Do not trim, climb near, or attempt to remove vegetation that is touching or close to a power line. Contact the approved utility or a qualified professional according to local requirements. If a branch has brought down a wire or created an immediate hazard, stay away and call emergency services.</p>
+        </article>
+        <article class="card">
+          <h3>Why does utility vegetation work occur?</h3>
+          <p>Utilities may manage vegetation to support safe access to equipment, reduce the likelihood of contacts with electrical lines, and maintain reliability. The assistant cannot confirm whether a specific tree will be trimmed, removed, inspected, or scheduled.</p>
+        </article>
+        <article class="card">
+          <h3>Report a tree concern</h3>
+          <p>For this sandbox, a customer may describe the general concern to a representative. The assistant can collect no sensitive data and should not ask the customer to approach the tree, wire, pole, or damaged equipment to take measurements or photographs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="outage-preparedness">
+      <h2>Outage preparedness and safety</h2>
+      <div class="emergency">
+        <h2>Emergency safety instruction</h2>
+        <p>If there is a downed line, fire, sparking, damaged electrical equipment, a vehicle in contact with a wire, or immediate danger: <strong>stay away, keep others away, and call local emergency services immediately.</strong> Do not touch, move, inspect, or attempt to repair utility equipment.</p>
+      </div>
+
+      <h3>Sandbox storm-preparedness checklist</h3>
+      <ol class="steps">
+        <li>Keep flashlights, fresh batteries, drinking water, and necessary medications available.</li>
+        <li>Charge mobile devices before severe weather when possible.</li>
+        <li>Keep refrigerator and freezer doors closed during an outage to help preserve food.</li>
+        <li>Use generators only outdoors and away from doors, windows, and vents; never operate a generator indoors or in an enclosed space.</li>
+        <li>Check official local emergency information for shelter, weather, and road conditions.</li>
+      </ol>
+
+      <div class="warning">
+        <h3>Important limitation</h3>
+        <p>The sandbox AI assistant cannot confirm the cause of a particular outage, identify an affected circuit, estimate restoration time, verify an individual outage report, or say that a crew has been dispatched. For account-specific or location-specific assistance, it should offer a human handoff.</p>
+      </div>
+    </section>
+
+    <section id="service-programs">
+      <h2>General service programs</h2>
+      <p>This section supplies additional website-only test material. It does not promise that a real GBPC program exists, that a customer qualifies, or that an incentive has been approved.</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Sandbox program</th>
+            <th>General description</th>
+            <th>AI Agent boundary</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Home Energy Check</td>
+            <td>A fictional educational review that may discuss general household energy-use patterns and conservation opportunities.</td>
+            <td>Do not determine eligibility, schedule a visit, quote savings, or collect detailed home information in chat.</td>
+          </tr>
+          <tr>
+            <td>Seasonal Readiness Reminder</td>
+            <td>A fictional reminder service that encourages customers to prepare for seasonal weather and review emergency supplies.</td>
+            <td>Do not claim that a reminder has been created, sent, or subscribed without an approved action.</td>
+          </tr>
+          <tr>
+            <td>Accessible Communications Request</td>
+            <td>A fictional route for customers seeking alternative communication formats or accessibility assistance.</td>
+            <td>Offer a live representative; do not promise a particular accommodation or completion date.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="common-questions">
+      <h2>Website-only test questions</h2>
+      <p>Use these questions in AI Agent Studio Preview after the page has been added and processed as a Website source. They are designed to confirm the agent retrieves information unique to this webpage rather than only using the existing document knowledge base.</p>
+      <details>
+        <summary>What format does a sandbox service request reference number use?</summary>
+        <p>In this sandbox, the illustrative format is <strong>GBPC-YYMM-XXXXX</strong>. The assistant must make clear that it cannot use this number to find, verify, or update a real customer request.</p>
+      </details>
+      <details>
+        <summary>Can I take the seal off my electric meter?</summary>
+        <p>No. Customers should not remove, tamper with, open, repair, or alter meters, seals, panels, or utility-owned equipment. If it appears unsafe, stay away and use the emergency reporting process.</p>
+      </details>
+      <details>
+        <summary>Can I use a generator inside my garage during an outage?</summary>
+        <p>No. Generators must not be operated indoors or in an enclosed space. Use them outdoors and away from doors, windows, and vents, following manufacturer instructions and local safety guidance.</p>
+      </details>
+      <details>
+        <summary>Can the chat assistant sign me up for a seasonal readiness reminder?</summary>
+        <p>No. The assistant can explain the fictional sandbox program but must not say that a reminder has been created or that the customer has been subscribed unless an approved action confirms it.</p>
+      </details>
+    </section>
+
+    <section id="escalation">
+      <h2>When to contact a representative</h2>
+      <p>The virtual assistant should offer a live-agent handoff for the following situations:</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Account-specific support</h3>
+          <p>Balances, bills, payments, account changes, service requests, eligibility, appointments, account verification, individual usage history, or request status.</p>
+        </article>
+        <article class="card">
+          <h3>Safety and urgent concerns</h3>
+          <p>For non-emergency urgent issues, offer a representative. For hazards or immediate danger, direct the customer to emergency services immediately rather than making them wait in a queue.</p>
+        </article>
+        <article class="card">
+          <h3>Escalation by request</h3>
+          <p>Offer a representative whenever a customer asks for a person, agent, human, supervisor, or help beyond the general information available on this page.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Source maintenance note</h2>
+      <p>When this page is changed, manually synchronize or reprocess the Website source in Webex AI Agent Studio as required by the tenant interface. Then republish the AI Agent and test the changed content in Preview before testing the live chat widget.</p>
+      <p class="small">Last updated: Sandbox content revision 1.0. Replace this page with GBPC-approved public information before any production use.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>GBPC Utility Support Sandbox FAQ</strong> — Webex AI Agent website-source testing only.</p>
+    </div>
+  </footer>
+</body>
+</html>
